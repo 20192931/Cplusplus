@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+class Calculator
+{
+private:
+    int numofAdd;
+    int numofDiv;
+    int numofMul;
+    int numofMin;
+public:
+    void Init();
+    double Add(double num1,double num2);
+    double Min(double num1,double num2);
+    double Mul(double num1,double num2);
+    double Div(double num1,double num2);
+    void ShowopCount();
+};
+void Calculator::Init()
+{
+    numofAdd=0;
+    numofDiv=0;
+    numofMul=0;
+    numofMin=0;
+}
+double Calculator::Add(double num1,double num2)
+{
+    numofAdd++;
+    return num1+num2;
+}
+double Calculator::Min(double num1,double num2)
+{
+    numofMin++;
+    return num1-num2;
+}
+double Calculator::Mul(double num1,double num2)
+{
+    numofMul++;
+    return num1*num2;
+}
+double Calculator::Div(double num1,double num2)
+{
+    numofDiv++;
+    return num1/num2;
+}
+void Calculator::ShowopCount()
+{
+    cout<<"덧셈: "<<numofAdd<<' ';
+    cout<<"뺄셈: "<<numofMin<<' ';
+    cout<<"곱셈: "<<numofMul<<' ';
+    cout<<"나눗셈: "<<numofDiv<<' ';
+}
+int main(void)
+    {
+    Calculator cal;
+    cal.Init();
+    cout<<cal.Add(3.2,2.4)<<endl;
+    cout<<cal.Div(3.5,1.7)<<endl;
+    cout<<cal.Min(2.2,1.5)<<endl;
+    cout<<cal.Div(4.9,1.2)<<endl;
+    cal.ShowopCount();
+    return 0;
+};
+

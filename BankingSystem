@@ -22,7 +22,7 @@ public:
         cusName=new char[strlen(name)+1];
         strcpy(cusName,name);
     }
-    int GetAccID(){return accID;}
+    int GetAccID const(){return accID;}
     
     void Deposit(int money)
     {
@@ -35,7 +35,7 @@ public:
         balance-=money;
         return money;
     }
-    void ShowAccInfo()
+    void ShowAccInfo() const
     {
         cout<<"계좌ID: "<<accID<<endl;
         cout<<"이름: "<<cusName<<endl;

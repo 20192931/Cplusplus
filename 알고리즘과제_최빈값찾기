@@ -1,0 +1,49 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<map>
+
+#define pp pair<int,int>
+
+using namespace std;
+
+map<int, int> m;
+
+bool cmp(const pp& a, const pp& b) {
+    if (a.second == b.second) return a.first > b.first;
+    return a.second > b.second;
+}
+
+void Map_Setting(int arr[],int size) {
+    for (int key=0;key<size;key++){
+        m[arr[key]]++;
+    }
+}
+void function1(int arr[],int size,int N){
+    Map_Setting(arr, size);
+    vector<pp> vec( m.begin(), m.end() );
+    sort(vec.begin(), vec.end(), cmp);
+    for (auto num : vec) {
+        if (N==0)
+            break;
+        cout << num.first <<" ";
+        N-=1;
+    }
+    cout<<endl;
+}
+int main() {
+    int size;
+        cin >> size;
+        
+        int N;
+        cin >> N;
+        
+        int *input = new int[size];
+        for (int idx = 0; idx < size; idx++) {
+            cin >> input[idx];
+        }
+    function1(input,size,N);
+
+
+    return 0;
+}

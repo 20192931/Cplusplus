@@ -1,0 +1,82 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+
+using namespace std;
+#define MAX 20001
+
+int getMax(int arr[],int size){
+    int max = arr[0];
+    for (int i=0; i<size; i++){
+        if (max<=arr[i]){
+            max=arr[i];
+        }
+    }
+  return max;
+}
+
+void frequency(int arr[], int size, int n){
+    int count[MAX];
+    for (int i=0 ; i<MAX; i++){
+        count[i]=0;
+    }
+    for (int i=0 ; i<size;i++){
+        count[arr[i]+10000]++;
+    }
+
+    
+    /*
+    cout << "count_arr: ";
+    for(int i=0;i<MAX;i++){
+        cout << count[i]<<" ";
+    }*/
+
+    vector<int> output;
+    
+    int max = getMax(count,MAX);
+    //cout << "max값은 : "<< max << endl;
+    for (int i=max;i>=0;i--){
+        for(int j=MAX-1 ; j>=0 ;j--){
+            if (i==count[j]){
+                output.push_back(j);
+            }
+        }
+    }
+    /*
+    cout <<endl;
+    cout << "output: ";
+    for (int i=0 ; i<MAX;i++){
+        cout << output[i] <<" ";
+    }
+    cout <<endl;
+    
+    cout << "결과 값: ";
+    */
+    for (int i=0 ; i<n; i++){
+            cout << (output[i]-10000)<< " ";
+
+    }
+
+    //cout << "max_index: "<< max_index;
+}
+
+
+int main(){
+   int size;
+   cin >> size;
+   
+   int N;
+   cin >> N;
+   
+   int *input = new int[size];
+   for (int idx = 0; idx < size; idx++) {
+      cin >> input[idx];
+   }
+
+    frequency(input, size, N);
+
+    delete[] input;
+   return 0;
+
+}   
